@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Public_Sans, Rajdhani } from "next/font/google";
+import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const publicSans = Public_Sans({
@@ -14,10 +16,25 @@ const rajdhani = Rajdhani({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: "Family Roofing",
   description:
     "Bilingual roofing, storm response, and gutter services for Lincoln and surrounding Nebraska communities.",
   applicationName: "Family Roofing",
+  alternates: {
+    languages: {
+      en: "/en",
+      es: "/es",
+      "x-default": "/en",
+    },
+  },
+  openGraph: {
+    siteName: siteConfig.name,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
@@ -29,6 +46,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${publicSans.variable} ${rajdhani.variable}`}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
