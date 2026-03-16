@@ -111,6 +111,21 @@ export function RoofingHome({ locale, content }: RoofingHomeProps) {
   const alternateLocale = locale === "en" ? "es" : "en";
   const footerExploreLabel = locale === "en" ? "Explore" : "Explora";
   const footerContactLabel = locale === "en" ? "Contact" : "Contacto";
+  const demoNotice =
+    locale === "en"
+      ? {
+          label: "Temporary Demo Preview",
+          mobileText: "This preview is temporary and scheduled for removal on March 19, 2026.",
+          desktopText:
+            "This domain is a temporary presentation preview and is scheduled for removal on March 19, 2026. It is not the company's current website.",
+        }
+      : {
+          label: "Vista Previa Temporal",
+          mobileText:
+            "Esta vista previa es temporal y esta programada para eliminarse el 19 de marzo de 2026.",
+          desktopText:
+            "Este dominio es una vista previa temporal para presentacion y esta programado para eliminarse el 19 de marzo de 2026. No es el sitio web actual de la empresa.",
+        };
   const mobileAnnouncement =
     locale === "en"
       ? "Hispanic-owned roofing in Lincoln. Se habla espanol."
@@ -140,6 +155,16 @@ export function RoofingHome({ locale, content }: RoofingHomeProps) {
 
   return (
     <div className="bg-[var(--color-white)] text-[var(--color-black)]">
+      <div className="sticky top-0 z-[60] border-b-2 border-[var(--color-black)] bg-[var(--color-gold)] text-[var(--color-black)]">
+        <div className="mx-auto flex max-w-7xl items-start gap-3 px-4 py-3 sm:px-6 lg:items-center lg:justify-between lg:px-8">
+          <p className="font-display shrink-0 text-xs font-bold uppercase tracking-[0.16em]">
+            {demoNotice.label}
+          </p>
+          <p className="text-sm font-semibold leading-6 lg:hidden">{demoNotice.mobileText}</p>
+          <p className="hidden text-sm font-semibold leading-6 lg:block">{demoNotice.desktopText}</p>
+        </div>
+      </div>
+
       <header className="border-b-2 border-[var(--color-black)]">
         <div className="border-b-4 border-[var(--color-gold)] bg-[var(--color-black)] text-[var(--color-white)]">
           <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-3 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">

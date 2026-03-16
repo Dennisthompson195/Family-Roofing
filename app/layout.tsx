@@ -21,6 +21,14 @@ export const metadata: Metadata = {
   description:
     "Bilingual roofing, storm response, and gutter services for Lincoln and surrounding Nebraska communities.",
   applicationName: "Family Roofing",
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
   alternates: {
     languages: {
       en: "/en",
